@@ -1,0 +1,40 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @client.name %>
+      </h1>
+      <h6>
+        <%= "Email: #{@client.email}" %>
+      </h6>
+      <h6>
+        <%= "Recapito telefonico: #{@client.phone}" %>
+      </h6>
+      <h6>
+      <%= "Indirizzo: #{@client.address}" %>
+      </h6>
+      <br>
+      <%= link_to "Aggiungi rapportino",  new_report_client_path,
+                   class:"btn btn-primary" %>
+      <br>
+      <br>
+      <%= link_to "Aggiorna dati cliente", edit_client_path( @client ),
+                   class:"btn btn-primary" %>
+      <br>
+      <br>
+    </section>
+  <div class="col-md-8">
+    <% if @client.reports.any? %>
+      <h3>Lavori svolti per il cliente (<%= @client.reports.count %>)</h3>
+      <ul class="list-group">
+      <% @client.reports.each do |report| %>
+        <li class="list-group-item">  
+          <%="Nome cliente: #{report.client.name}"%>
+          <%= link_to  "Data:#{report.created_at.mday}/#{report.created_at.month}/#{report.created_at.year}",
+                               report_path(report)  %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

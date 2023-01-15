@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Rapportini App", root_path, class:"navbar-brand" %>
+
+    </button>
+    <div class="navbar-" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Clienti", clients_path , class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to"Nuovo cliente", new_client_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to"Rapportini", reports_path, class:"nav-link" %>
+        </li>
+        <% if user_signed_in? %> 
+          <li class="nav-item">
+            <%= link_to current_user.name, user_path(current_user),
+                        class:"nav-link" %>
+          </li>
+          <li>
+             <%= button_to(
+        "Log Out",
+        destroy_user_session_path,
+        method: :delete,class:"btn btn-danger btn-sm"
+      ) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Log In ", new_user_session_path, 
+                         class:"btn btn-success btn-sm" %>
+          </li>
+          <li>
+            <%= link_to"Sign Up", new_user_registration_path,
+                        class:"btn btn-warning btn-sm"  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

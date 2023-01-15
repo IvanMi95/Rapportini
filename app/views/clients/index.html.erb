@@ -1,0 +1,11 @@
+<h1>Tutti clienti:</h1>
+<ul class="list-group">
+  <% @clients.each do |client| %>
+    <li class="list-group-item">  
+      <%= link_to "Nome cliente: #{client.name}", client_path( client ), 
+                  class:"link-success" %>
+      <%= "Indirizzo: #{client.address}" %>
+    </li>
+  <% end %>
+</ul>
+

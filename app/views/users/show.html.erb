@@ -1,0 +1,30 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        Nome utente: <%= @user.name.capitalize() %>
+      </h1>
+      <h1>
+        Email: <%= @user.email.capitalize() %>
+      </h1>
+      <br>
+      <br>
+      <ul class="list-group">
+      <h3>Rapportini:</h3>
+      <br>
+        <% @reports.each do |report| %>
+          <li class="list-group-item">  
+            <%="Nome cliente: #{report.client.name}"%>
+            <%= link_to  "Data:#{report.created_at.mday}/#{report.created_at.month}/#{report.created_at.year}",
+                            report_path(report)  %>
+          </li>
+        <% end %>
+      </ul>
+      <br>
+      <br>
+      <%#= link_to "Export as csv", users_export_path, class:"btn btn-success btn-sm" %>
+      <%= button_to("Log Out", destroy_user_session_path,
+                    method: :delete, class:"btn btn-danger btn-sm") %>
+    </section>
+  </aside>
+</div>

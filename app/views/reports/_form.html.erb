@@ -1,0 +1,16 @@
+<%= form_with model:@report do |f| %>
+  
+  <%= f.label :description, "Lavoro svolto" %>
+  <%= f.text_area :description, class: 'form-control' %> 
+
+  <%= f.label :material, "Materiale usato" %>
+  <%= f.text_field :material, class: 'form-control' %>
+
+  <%= f.label :hours, "Ore lavorate" %>
+  <%= f.number_field :hours, class: 'form-control' %>
+  
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  
+  <%= f.submit "Conferma", class: "btn btn-primary" %>
+<% end %>

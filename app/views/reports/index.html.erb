@@ -1,0 +1,12 @@
+<h1>Tutti raportini:</h1>
+<ul class="list-group">
+  <% @reports.each do |report| %>
+    <li class="list-group-item">  
+      <%="Nome cliente: #{report.client.name}"%>
+      <%= link_to  "Data:#{report.created_at.mday}/#{report.created_at.month}/#{report.created_at.year}",
+                           report_path(report), class:"link-success" %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<%= link_to "Esporta come csv", reports_path(format: 'csv'), class:"btn btn-success" %>

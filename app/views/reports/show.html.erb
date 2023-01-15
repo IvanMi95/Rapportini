@@ -1,0 +1,37 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= "Lavoratore: #{@report.user.name}" %>
+      </h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h5>Lavoro svolto: </h5>
+          <%=  @report.description %>
+        </li>
+        <li class="list-group-item">
+          <h5>Materiale usato: </h5>
+          <%= @report.material %>
+        </li>
+        <li class="list-group-item">
+          <h5>Ore lavorate: </h5>
+          <%= @report.hours %>
+        </li>
+        <li class="list-group-item">
+          <h5>Nome Clietne: </h5>
+          <%= @client.name %>
+        </li>
+        <li class="list-group-item">
+          <h5>Indirizzo cliente: </h5>
+          <%= @client.address %>
+        </li>
+        <li class="list-group-item">
+          <h5>Data: </h5>
+          <%= "#{@report.created_at.mday}/#{@report.created_at.month}/#{@report.created_at.year}" %>
+        </li>
+      </ul>
+        <br>
+      <%= link_to "Aggiorna dati raportino", edit_report_path(@report),
+                   class:"btn btn-primary" %>
+    </section>
+</div>
